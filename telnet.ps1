@@ -1,4 +1,4 @@
-﻿function Test-Telnet {
+function Test-Telnet {
     param (
         [string]$IP,
         [int]$Port
@@ -67,16 +67,16 @@ $firstTelnet = $true
 
 do {
     if ($firstTelnet) {
-        $choice = Read-Host "Chọn 1 để nhập IP hoặc 2 để nhập đường dẫn tới file danh sách IP"
+        $choice = Read-Host "Chọn (1) để nhập IP hoặc (2) để nhập đường dẫn tới file danh sách IP"
     } else {
-        $choice = Read-Host "Chọn 1 để nhập IP, 2 để nhập đường dẫn tới file danh sách IP, hoặc 3 để thoát"
+        $choice = Read-Host "Chọn (1) để nhập IP, (2) để nhập đường dẫn tới file danh sách IP, hoặc (3) để thoát"
     }
 
     if ($choice -eq "1") {
         do {
             $IP = Read-Host "Nhập địa chỉ IP"
             if (-not (Validate-IP -IP $IP)) {
-                Write-Host "Địa chỉ IP không hợp lệ. Vui lòng nhập lại." -ForegroundColor Red
+                Write-Host "Địa chỉ IP không hợp lệ. Hãy nhập lại." -ForegroundColor Red
                 $validIP = $false
             } else {
                 $validIP = $true
@@ -88,7 +88,7 @@ do {
         do {
             $FilePath = Read-Host "Nhập đường dẫn đến file danh sách IP"
             if (-not (Test-Path $FilePath)) {
-                Write-Host "File không tồn tại. Vui lòng nhập lại đường dẫn." -ForegroundColor Red
+                Write-Host "File không tồn tại. hãy nhập lại đường dẫn." -ForegroundColor Red
                 $validFilePath = $false
             } else {
                 $validFilePath = $true
@@ -101,7 +101,7 @@ do {
         do {
             $Port = Read-Host "Nhập cổng"
             if (-not (Validate-Port -Port $Port)) {
-                Write-Host "Cổng không hợp lệ. Vui lòng nhập lại." -ForegroundColor Red
+                Write-Host "Cổng không hợp lệ. Hãy nhập lại." -ForegroundColor Red
                 $validPort = $false
             } else {
                 $validPort = $true
